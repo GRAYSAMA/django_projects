@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends "master.html" %}
 
-<body>
+{% block title %}
+  Details about {{ myproduct.product_name }} {{ myproduct.price }}
+{% endblock %}
 
-<h1>{{ myproduct.product_name }} {{ myproduct.price }}</h1>
+
+{% block content %}
+  <h1>{{ myproduct.product_name }} {{ myproduct.price }}</h1>
   
-<p>Owner's Phone: {{ myproduct.owner_number }}</p>
-<p>Last Maintained: {{ myproduct.date_maintained }}</p>
-
-<p>Back to <a href="/playground/products">Products</a></p>
-
-</body>
-</html>
+  <p>Owner's Phone: {{ myproduct.owner_number }}</p>
+  <p>Last Maintained: {{ myproduct.date_maintained }}</p>
+  
+  <p>Back to <a href="/products">Products</a></p>
+  
+{% endblock %}

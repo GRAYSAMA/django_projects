@@ -1,20 +1,24 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
 from .models import Products
 
+
 def products(request):
-   myproducts = Products.objects.all().values()
-   template = loader.get_template('hello.html')
-   context = {
-     'myproducts': myproducts,
-   }
-   return HttpResponse(template.render(context, request))
+    myproducts = Products.objects.all().values()
+    context = {
+        'myproducts': myproducts
+    }
+    return render(request, 'hello.html', context)
 
 
 def details(request, id):
   myproduct = Products.objects.get(id=id)
-  template = loader.get_template('details.html')
   context = {
     'myproduct': myproduct,
   }
-  return HttpResponse(template.render(context, request))
+  return render(request,'details.html', context)
+
+
+def main(request):
+    return render(request, 'main.html') 

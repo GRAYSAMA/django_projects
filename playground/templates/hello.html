@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "master.html" %}
 
-<h1>Products</h1>
+{% block title %}
+  My Playground - List of all products
+{% endblock %}
+
+
+{% block content %}
+  <p><a href="/">HOME</a></p>
   
-<ul>
-  {% for x in myproducts %}
-    <li><a href="details/{{ x.id }}">{{ x.product_name }}, ${{ x.price }}</a></li>
-  {% endfor %}
-</ul>
-
-</body>
-</html>
+  <h1>Products</h1>
+  
+  <ul>
+    {% for x in myproducts %}
+        <li><a href="details/{{ x.id }}">{{ x.product_name }}, ${{ x.price }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
